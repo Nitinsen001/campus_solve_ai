@@ -1,0 +1,21 @@
+Problem Title,Description,Location,Category,Priority,Status
+WiFi not working in Block A,Internet connectivity has been unavailable for the last two days in Block A.,Hostel Block A,Internet/WiFi,High,Open
+Water supply stopped in Hostel Block B,No water supply in Hostel Block B for two days.,Hostel Block B,Water,High,Open
+Projector not working in Room 204,The projector in classroom 204 is not working for presentations.,Classroom 204,Infrastructure,Medium,Open
+Electrical sparks in Lab 3,There are sparks coming from an electrical board in Lab 3.,Laboratory 3,Electricity,Critical,Open
+Slow computers in Lab 2,Computers in Lab 2 are extremely slow.,Laboratory 2,Laboratory,Medium,Open
+No hot water in hostel bathrooms,No hot water supply in hostel bathrooms during winter.,Hostel,Hostel,Medium,Open
+Canteen food quality is poor,Food quality in the canteen has degraded significantly.,Canteen,Canteen,Medium,Open
+Garbage not collected near gate,Garbage has not been collected for three days near the main gate.,Main Gate,Cleanliness,Low,Open
+Bus broke down on route,College bus broke down on the route causing delays.,Transport,Transport,High,Open
+Street lights not working,Street lights are not working near the campus entrance.,Campus Entrance,Safety,Medium,Open
+WiFi slow in library,Internet speed in the library is extremely slow.,Library,Internet/WiFi,Medium,Open
+Water leakage near canteen,Water leakage from the pipeline near the canteen.,Canteen,Water,Medium,Open
+Ceiling fan fell down in room 105,A ceiling fan fell down and injured a student in room 105.,Room 105,Infrastructure,Critical,Open
+Mess food quality degraded,Mess food quality has degraded over the past week.,Hostel Mess,Hostel,Medium,Open
+No security guard at main gate,No security guard is present at the main gate at night.,Main Gate,Safety,High,Open
+Broken benches in classroom,Classroom benches are broken and need repair.,Classroom 102,Infrastructure,Low,Open
+Lab chemicals missing,No chemicals are available for practicals in the chemistry lab.,Chemistry Lab,Laboratory,High,Open
+Dirty washrooms in hostel,Washrooms in the hostel are dirty and smelly.,Hostel Block C,Cleanliness,Medium,Open
+No transport for late students,No transport facility is available for students returning late at night.,Campus Gate,Transport,High,Open
+Door lock broken in washroom,Door lock is broken in the second floor washroom.,Block B,Infrastructure,Low,Open

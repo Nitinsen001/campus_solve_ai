@@ -1,0 +1,735 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile - CampusSolve AI{% endblock %}
+
+{% block content %}
+<style>
+    /* ============================================
+       PROFILE PAGE Ã¢â‚¬â€ MODERN SHELL
+       ============================================ */
+    .profile-shell {
+        padding: 2rem 1rem 3rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        animation: profileEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes profileEnter {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       PROFILE HERO CARD (with cover gradient)
+       ============================================ */
+    .profile-hero {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow:
+            0 1px 2px rgba(15, 23, 42, 0.04),
+            0 12px 32px -8px rgba(15, 23, 42, 0.1),
+            0 32px 64px -16px rgba(220, 38, 38, 0.15);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        margin-bottom: 1.5rem;
+    }
+
+    /* Cover */
+    .profile-cover {
+        position: relative;
+        height: 160px;
+        background:
+            radial-gradient(120% 140% at 0% 0%, #0b0b0f 0%, #991b1b 40%, #dc2626 70%, #450a0a 100%);
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    .profile-cover::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: radial-gradient(ellipse at 30% 50%, #000 40%, transparent 80%);
+        -webkit-mask-image: radial-gradient(ellipse at 30% 50%, #000 40%, transparent 80%);
+    }
+
+    .profile-cover::after {
+        content: '';
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(220, 38, 38, 0.4) 0%, transparent 65%);
+        top: -180px;
+        right: -120px;
+        filter: blur(20px);
+        animation: coverOrb 14s ease-in-out infinite;
+    }
+
+    @keyframes coverOrb {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50%      { transform: translate(-30px, 20px) scale(1.15); }
+    }
+
+    /* Optional cover pattern text (subtle) */
+    .cover-pattern {
+        position: absolute;
+        bottom: 12px;
+        left: 24px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        z-index: 1;
+    }
+
+    .cover-pattern .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+        animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+        0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+        70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    }
+
+    /* Identity Row */
+    .profile-identity {
+        display: flex;
+        align-items: flex-end;
+        gap: 1.5rem;
+        padding: 0 2rem 1.75rem;
+        margin-top: -56px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Avatar with ring */
+    .avatar-wrap {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .avatar-ring {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        padding: 4px;
+        background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 50%, #450a0a 100%);
+        box-shadow: 0 12px 32px -8px rgba(220, 38, 38, 0.5);
+        animation: avatarRingPulse 4s ease-in-out infinite;
+        position: relative;
+    }
+
+    @keyframes avatarRingPulse {
+        0%, 100% { box-shadow: 0 12px 32px -8px rgba(220, 38, 38, 0.5); }
+        50%      { box-shadow: 0 16px 40px -8px rgba(127, 29, 29, 0.55); }
+    }
+
+    .avatar-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .avatar-initials {
+        font-size: 2.6rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+    }
+
+    /* Online indicator */
+    .avatar-status {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #10b981;
+        border: 3px solid #ffffff;
+        box-shadow: 0 2px 6px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Identity text */
+    .identity-text {
+        padding-bottom: 0.5rem;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .identity-text h1 {
+        font-size: 1.65rem;
+        font-weight: 800;
+        color: #111111;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.35rem;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+
+    .identity-text .email-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #64748b;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+    }
+
+    .identity-text .email-line i {
+        color: #94a3b8;
+    }
+
+    .role-chips {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .chip:hover { transform: translateY(-2px); }
+
+    .chip-role {
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.12), rgba(124, 58, 237, 0.12));
+        color: #991b1b;
+        border: 1px solid rgba(220, 38, 38, 0.2);
+    }
+
+    .chip-role i { font-size: 0.85rem; }
+
+    .chip-verified {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(52, 211, 153, 0.12));
+        color: #059669;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    /* ============================================
+       STATS STRIP
+       ============================================ */
+    .stats-strip {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .stat-tile {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 1.35rem 1.4rem;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.06);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        animation: tileIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .stat-tile:nth-child(1) { animation-delay: 0.05s; }
+    .stat-tile:nth-child(2) { animation-delay: 0.12s; }
+    .stat-tile:nth-child(3) { animation-delay: 0.19s; }
+    .stat-tile:nth-child(4) { animation-delay: 0.26s; }
+
+    @keyframes tileIn {
+        from { opacity: 0; transform: translateY(16px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .stat-tile::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: var(--gradient-1);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stat-tile:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.14);
+        border-color: rgba(220, 38, 38, 0.25);
+    }
+
+    .stat-tile:hover::before { transform: scaleX(1); }
+
+    .stat-tile .tile-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        color: #ffffff;
+        margin-bottom: 0.85rem;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stat-tile:hover .tile-icon {
+        transform: scale(1.1) rotate(-6deg);
+    }
+
+    .tile-icon.indigo { background: linear-gradient(135deg, #dc2626, #b91c1c); }
+    .tile-icon.pink   { background: linear-gradient(135deg, #7f1d1d, #f472b6); }
+    .tile-icon.cyan   { background: linear-gradient(135deg, #450a0a, #dc2626); }
+    .tile-icon.green  { background: linear-gradient(135deg, #10b981, #34d399); }
+
+    .stat-tile .tile-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-tile .tile-value {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #111111;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+        word-break: break-word;
+    }
+
+    /* ============================================
+       INFO GRID CARD
+       ============================================ */
+    .info-card {
+        background: #ffffff;
+        border-radius: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.06);
+        overflow: hidden;
+        animation: tileIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+
+    .info-card-head {
+        padding: 1.25rem 1.75rem;
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(139, 92, 246, 0.05));
+        border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+
+    .info-card-head .head-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 12px -2px rgba(220, 38, 38, 0.5);
+    }
+
+    .info-card-head h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1px;
+        background: #f1f5f9;
+    }
+
+    .info-item {
+        background: #ffffff;
+        padding: 1.35rem 1.75rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        transition: background 0.25s ease;
+        position: relative;
+    }
+
+    .info-item:hover {
+        background: linear-gradient(135deg, rgba(220, 38, 38, 0.03), rgba(139, 92, 246, 0.03));
+    }
+
+    .info-item .ii-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(220, 38, 38, 0.08);
+        color: #dc2626;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .info-item:hover .ii-icon {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        color: #ffffff;
+        transform: scale(1.08);
+    }
+
+    .info-item .ii-body {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .info-item .ii-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.35rem;
+    }
+
+    .info-item .ii-value {
+        font-size: 0.98rem;
+        font-weight: 600;
+        color: #111111;
+        letter-spacing: -0.01em;
+        word-break: break-word;
+        line-height: 1.4;
+    }
+
+    .info-item .ii-value.muted {
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    /* ============================================
+       ACTION BAR
+       ============================================ */
+    .action-bar {
+        margin-top: 1.75rem;
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        animation: tileIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+    }
+
+    .btn-primary-pill,
+    .btn-outline-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.75rem 1.4rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary-pill {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: #ffffff;
+        box-shadow: 0 8px 20px -6px rgba(220, 38, 38, 0.55);
+    }
+
+    .btn-primary-pill::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .btn-primary-pill:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 28px -8px rgba(220, 38, 38, 0.65);
+        color: #ffffff;
+    }
+
+    .btn-primary-pill:hover::before { opacity: 1; }
+
+    .btn-primary-pill span,
+    .btn-primary-pill i { position: relative; z-index: 1; }
+
+    .btn-primary-pill i { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    .btn-primary-pill:hover i { transform: translateX(4px); }
+
+    .btn-outline-pill {
+        background: #ffffff;
+        color: #475569;
+        border: 1.5px solid #e2e8f0;
+    }
+
+    .btn-outline-pill:hover {
+        border-color: #dc2626;
+        background: rgba(220, 38, 38, 0.04);
+        color: #991b1b;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px -10px rgba(220, 38, 38, 0.5);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+        .profile-shell { padding: 1rem 0.75rem 2rem; }
+
+        .profile-cover { height: 130px; }
+
+        .profile-identity {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 1.25rem 1.5rem;
+            margin-top: -56px;
+            gap: 1rem;
+        }
+
+        .avatar-ring { width: 112px; height: 112px; }
+        .avatar-initials { font-size: 2.2rem; }
+
+        .identity-text { padding-bottom: 0; }
+        .identity-text h1 { font-size: 1.35rem; }
+        .identity-text .email-line { justify-content: center; }
+        .role-chips { justify-content: center; }
+
+        .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+        .info-grid { grid-template-columns: 1fr; }
+        .info-item { padding: 1.15rem 1.25rem; }
+
+        .info-card-head { padding: 1rem 1.25rem; }
+
+        .action-bar { flex-direction: column; }
+        .btn-primary-pill,
+        .btn-outline-pill { justify-content: center; width: 100%; }
+    }
+
+    @media (max-width: 400px) {
+        .stats-strip { grid-template-columns: 1fr; }
+    }
+</style>
+
+<div class="profile-shell">
+
+    <!-- ============ HERO CARD ============ -->
+    <div class="profile-hero">
+        <div class="profile-cover">
+            <div class="cover-pattern">
+                <span class="dot"></span>
+                Active Member
+            </div>
+        </div>
+
+        <div class="profile-identity">
+            <div class="avatar-wrap">
+                <div class="avatar-ring">
+                    <div class="avatar-inner">
+                        <span class="avatar-initials">
+                            {% if user.full_name %}
+                                {{ user.full_name|slice:":1"|upper }}
+                            {% else %}
+                                {{ user.username|slice:":1"|upper }}
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                <span class="avatar-status" title="Online"></span>
+            </div>
+
+            <div class="identity-text">
+                <h1>
+                    {% if user.full_name %}{{ user.full_name }}{% else %}{{ user.username }}{% endif %}
+                </h1>
+                <div class="email-line">
+                    <i class="bi bi-envelope-fill"></i>
+                    {{ user.email }}
+                </div>
+
+                <div class="role-chips">
+                    <span class="chip chip-role">
+                        <i class="bi bi-{% if user.role == 'ADMIN' %}shield-lock-fill{% elif user.role == 'STAFF' %}person-badge-fill{% else %}person-fill{% endif %}"></i>
+                        {{ user.get_role_display|default:user.role }}
+                    </span>
+                    {% if user.is_active %}
+                        <span class="chip chip-verified">
+                            <i class="bi bi-patch-check-fill"></i>
+                            Verified
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ STATS STRIP ============ -->
+    <div class="stats-strip">
+        <div class="stat-tile">
+            <div class="tile-icon indigo">
+                <i class="bi bi-person-badge-fill"></i>
+            </div>
+            <div class="tile-label">Username</div>
+            <div class="tile-value">{{ user.username }}</div>
+        </div>
+
+        <div class="stat-tile">
+            <div class="tile-icon pink">
+                <i class="bi bi-calendar-heart-fill"></i>
+            </div>
+            <div class="tile-label">Member Since</div>
+            <div class="tile-value">{{ user.created_at|date:"M d, Y"|default:"Ã¢â‚¬â€" }}</div>
+        </div>
+
+        <div class="stat-tile">
+            <div class="tile-icon cyan">
+                <i class="bi bi-clock-history"></i>
+            </div>
+            <div class="tile-label">Last Login</div>
+            <div class="tile-value">
+                {% if user.last_login %}
+                    {{ user.last_login|date:"M d, Y" }}
+                {% else %}
+                    First visit
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="stat-tile">
+            <div class="tile-icon green">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="tile-label">Account Status</div>
+            <div class="tile-value">
+                {% if user.is_active %}Active{% else %}Inactive{% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ INFO CARD ============ -->
+    <div class="info-card">
+        <div class="info-card-head">
+            <span class="head-icon"><i class="bi bi-info-circle-fill"></i></span>
+            <h2>Account Information</h2>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="ii-icon"><i class="bi bi-person-fill"></i></span>
+                <div class="ii-body">
+                    <div class="ii-label">Full Name</div>
+                    <div class="ii-value">
+                        {% if user.full_name %}{{ user.full_name }}{% else %}<span class="muted">Not set</span>{% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="ii-icon"><i class="bi bi-envelope-fill"></i></span>
+                <div class="ii-body">
+                    <div class="ii-label">Email Address</div>
+                    <div class="ii-value">{{ user.email }}</div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="ii-icon"><i class="bi bi-shield-lock-fill"></i></span>
+                <div class="ii-body">
+                    <div class="ii-label">Role</div>
+                    <div class="ii-value">{{ user.get_role_display|default:user.role }}</div>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="ii-icon"><i class="bi bi-calendar3"></i></span>
+                <div class="ii-body">
+                    <div class="ii-label">Member Since</div>
+                    <div class="ii-value">{{ user.created_at|date:"F d, Y"|default:"Ã¢â‚¬â€" }}</div>
+                </div>
+            </div>
+
+            {% if user.username %}
+            <div class="info-item">
+                <span class="ii-icon"><i class="bi bi-at"></i></span>
+                <div class="ii-body">
+                    <div class="ii-label">Username</div>
+                    <div class="ii-value">@{{ user.username }}</div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if user.last_login %}
+            <div class="info-item">
+                <span class="ii-icon"><i class="bi bi-box-arrow-in-right"></i></span>
+                <div class="ii-body">
+                    <div class="ii-label">Last Login</div>
+                    <div class="ii-value">{{ user.last_login|date:"F d, Y Ã‚Â· H:i" }}</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- ============ ACTION BAR ============ -->
+    <div class="action-bar">
+        <a href="{% url 'submit_problem' %}" class="btn-primary-pill">
+            <span>Report a Problem</span>
+            <i class="bi bi-arrow-right"></i>
+        </a>
+        <a href="{% url 'my_submissions' %}" class="btn-outline-pill">
+            <i class="bi bi-folder-fill"></i>
+            <span>My Submissions</span>
+        </a>
+        <a href="{% url 'logout' %}" class="btn-outline-pill">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+
+</div>
+{% endblock %}
