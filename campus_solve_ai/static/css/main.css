@@ -1,15 +1,15 @@
 :root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --success-color: #198754;
-    --danger-color: #dc3545;
-    --warning-color: #ffc107;
-    --info-color: #0dcaf0;
+    --primary-color: #212121;
+    --secondary-color: #616161;
+    --success-color: #2E7D32;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #616161;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #FFFFFF;
 }
 
 .navbar-brand {
@@ -46,17 +46,78 @@ body {
 
 .form-control, .form-select {
     border-radius: 8px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #E0E0E0;
+    background-color: #FFFFFF;
+    color: #212121;
+    caret-color: #212121;
+}
+
+.form-control::placeholder, .form-select::placeholder {
+    color: #9E9E9E;
+    opacity: 1;
 }
 
 .form-control:focus, .form-select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+    border-color: #616161;
+    box-shadow: 0 0 0 0.2rem rgba(97, 97, 97, 0.12);
+    background-color: #FFFFFF;
+    color: #212121;
+    caret-color: #212121;
+}
+
+/* Native select dropdown options (light theme) */
+.form-select option,
+select option {
+    background-color: #FFFFFF;
+    color: #212121;
+}
+
+.form-select option:checked,
+select option:checked {
+    background-color: #E0E0E0;
+    color: #212121;
+}
+
+/* Disabled form controls */
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled {
+    background-color: #F5F5F5;
+    border-color: #E0E0E0;
+    color: #9E9E9E;
+    opacity: 1;
+}
+
+/* Date / time / number input inner spinners & calendar icon */
+.form-control[type="date"],
+.form-control[type="time"],
+.form-control[type="datetime-local"],
+.form-control[type="month"],
+.form-control[type="week"] {
+    color-scheme: light;
+}
+
+.form-control[type="number"] {
+    color-scheme: light;
+}
+
+/* Autofill — keep white surface with dark text */
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus,
+.form-select:-webkit-autofill,
+.form-select:-webkit-autofill:hover,
+.form-select:-webkit-autofill:focus {
+    -webkit-text-fill-color: #212121;
+    -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset;
+    box-shadow: 0 0 0 1000px #FFFFFF inset;
+    transition: background-color 9999s ease-in-out 0s;
+    caret-color: #212121;
 }
 
 .table th {
     font-weight: 600;
-    color: #495057;
+    color: #212121;
 }
 
 .alert {
