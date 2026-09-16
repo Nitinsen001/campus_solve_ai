@@ -215,10 +215,7 @@
         transform: scale(1.1) rotate(-6deg);
     }
 
-    .ms-stat .stat-ico.total    { background: linear-gradient(135deg, #dc2626, #b91c1c); }
-    .ms-stat .stat-ico.pending  { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
-    .ms-stat .stat-ico.approved { background: linear-gradient(135deg, #10b981, #34d399); }
-    .ms-stat .stat-ico.rejected { background: linear-gradient(135deg, #ef4444, #f87171); }
+  
 
     .ms-stat .stat-body {
         min-width: 0;
@@ -786,65 +783,31 @@
         </a>
     </div>
 
-    <!-- ============ STATS STRIP ============ -->
-    <div class="ms-stats">
-        <div class="ms-stat">
-            <span class="stat-ico total"><i class="bi bi-collection-fill"></i></span>
-            <div class="stat-body">
-                <div class="stat-label">Total</div>
-                <div class="stat-value">{{ problems|length }}</div>
-            </div>
-        </div>
-
-        <div class="ms-stat">
-            <span class="stat-ico pending"><i class="bi bi-hourglass-split"></i></span>
-            <div class="stat-body">
-                <div class="stat-label">Pending</div>
-                <div class="stat-value">{{ pending_count|default:"0" }}</div>
-            </div>
-        </div>
-
-        <div class="ms-stat">
-            <span class="stat-ico approved"><i class="bi bi-patch-check-fill"></i></span>
-            <div class="stat-body">
-                <div class="stat-label">Approved</div>
-                <div class="stat-value">{{ approved_count|default:"0" }}</div>
-            </div>
-        </div>
-
-        <div class="ms-stat">
-            <span class="stat-ico rejected"><i class="bi bi-x-octagon-fill"></i></span>
-            <div class="stat-body">
-                <div class="stat-label">Rejected</div>
-                <div class="stat-value">{{ rejected_count|default:"0" }}</div>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- ============ FILTER TABS ============ -->
     <nav class="ms-tabs" aria-label="Filter submissions">
         <a href="?status=All" class="ms-tab {% if current_status == 'All' or not current_status %}active{% endif %}">
             <i class="bi bi-grid-3x3-gap-fill"></i>
             <span>All</span>
-            <span class="tab-count">{{ problems|length }}</span>
+            <span class="tab-count" data-count="total_count">{{ total_count }}</span>
         </a>
 
         <a href="?status=PENDING" class="ms-tab {% if current_status == 'PENDING' %}active{% endif %}">
             <i class="bi bi-hourglass-split"></i>
             <span>Pending</span>
-            <span class="tab-count">{{ pending_count|default:"0" }}</span>
+            <span class="tab-count" data-count="pending_count">{{ pending_count }}</span>
         </a>
 
         <a href="?status=APPROVED" class="ms-tab {% if current_status == 'APPROVED' %}active{% endif %}">
             <i class="bi bi-check-circle-fill"></i>
             <span>Approved</span>
-            <span class="tab-count">{{ approved_count|default:"0" }}</span>
+            <span class="tab-count" data-count="approved_count">{{ approved_count }}</span>
         </a>
 
         <a href="?status=REJECTED" class="ms-tab {% if current_status == 'REJECTED' %}active{% endif %}">
             <i class="bi bi-x-circle-fill"></i>
             <span>Rejected</span>
-            <span class="tab-count">{{ rejected_count|default:"0" }}</span>
+            <span class="tab-count" data-count="rejected_count">{{ rejected_count }}</span>
         </a>
     </nav>
 
@@ -928,4 +891,28 @@
     </div>
 
 </div>
+
+<script>
+    // Keep the badges in sync when an admin changes a status in another tab.
+    (() => {
+        const refreshCounts = async () => {
+            try {
+                const response = await fetch("{% url 'my_submission_counts' %}", {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                    credentials: 'same-origin',
+                });
+                if (!response.ok) return;
+
+                const counts = await response.json();
+                document.querySelectorAll('[data-count]').forEach((element) => {
+                    element.textContent = counts[element.dataset.count] ?? 0;
+                });
+            } catch (_) {
+                // A short network issue should never interrupt the page.
+            }
+        };
+
+        window.setInterval(refreshCounts, 15000);
+    })();
+</script>
 {% endblock %}

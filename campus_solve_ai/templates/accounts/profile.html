@@ -5,7 +5,7 @@
 {% block content %}
 <style>
     /* ============================================
-       PROFILE PAGE Ã¢â‚¬â€ MODERN SHELL
+       PROFILE PAGE — MODERN SHELL
        ============================================ */
     .profile-shell {
         padding: 2rem 1rem 3rem;
@@ -623,7 +623,7 @@
                 <i class="bi bi-calendar-heart-fill"></i>
             </div>
             <div class="tile-label">Member Since</div>
-            <div class="tile-value">{{ user.created_at|date:"M d, Y"|default:"Ã¢â‚¬â€" }}</div>
+            <div class="tile-value">{{ user.created_at|date:"M d, Y"|default:"—" }}</div>
         </div>
 
         <div class="stat-tile">
@@ -689,7 +689,7 @@
                 <span class="ii-icon"><i class="bi bi-calendar3"></i></span>
                 <div class="ii-body">
                     <div class="ii-label">Member Since</div>
-                    <div class="ii-value">{{ user.created_at|date:"F d, Y"|default:"Ã¢â‚¬â€" }}</div>
+                    <div class="ii-value">{{ user.created_at|date:"F d, Y"|default:"—" }}</div>
                 </div>
             </div>
 
@@ -708,7 +708,7 @@
                 <span class="ii-icon"><i class="bi bi-box-arrow-in-right"></i></span>
                 <div class="ii-body">
                     <div class="ii-label">Last Login</div>
-                    <div class="ii-value">{{ user.last_login|date:"F d, Y Ã‚Â· H:i" }}</div>
+                    <div class="ii-value">{{ user.last_login|date:"F d, Y · H:i" }}</div>
                 </div>
             </div>
             {% endif %}

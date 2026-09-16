@@ -832,19 +832,19 @@
                     <div class="mod-info-list">
                         <div class="mod-info-row">
                             <span class="label"><i class="bi bi-geo-alt-fill"></i> Location</span>
-                            <span class="value">{{ problem.location|default:"Ã¢â‚¬â€" }}</span>
+                            <span class="value">{{ problem.location|default:"—" }}</span>
                         </div>
                         <div class="mod-info-row">
                             <span class="label"><i class="bi bi-cpu-fill"></i> AI Category</span>
-                            <span class="value ai">{{ problem.ai_predicted_category|default:"Ã¢â‚¬â€" }}</span>
+                            <span class="value ai">{{ problem.ai_predicted_category|default:"—" }}</span>
                         </div>
                         <div class="mod-info-row">
                             <span class="label"><i class="bi bi-flag-fill"></i> AI Priority</span>
-                            <span class="value ai">{{ problem.ai_predicted_priority|default:"Ã¢â‚¬â€" }}</span>
+                            <span class="value ai">{{ problem.ai_predicted_priority|default:"—" }}</span>
                         </div>
                         <div class="mod-info-row">
                             <span class="label"><i class="bi bi-calendar3"></i> Submitted</span>
-                            <span class="value">{{ problem.created_at|date:"M d, Y Ã‚Â· H:i" }}</span>
+                            <span class="value">{{ problem.created_at|date:"M d, Y · H:i" }}</span>
                         </div>
                     </div>
 

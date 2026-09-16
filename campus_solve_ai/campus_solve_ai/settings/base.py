@@ -7,7 +7,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = 'django-insecure-campussolve-ai-2026-change-in-production'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-campussolve-ai-2026-change-in-production')
 DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 

@@ -3,6 +3,7 @@
 {% block title %}{{ problem.title }} - CampusSolve AI{% endblock %}
 
 {% block content %}
+
 <style>
     /* ============================================
        PROBLEM DETAIL SHELL
@@ -677,7 +678,7 @@
     }
 
     /* ============================================
-       RESPONSIVE Ã¢â‚¬â€ FULL MEDIA QUERIES
+       RESPONSIVE — FULL MEDIA QUERIES
        ============================================ */
 
     /* Tablet / small laptop */
@@ -945,13 +946,13 @@
                         <span class="ai-label">
                             <i class="bi bi-tag-fill"></i> Predicted Category
                         </span>
-                        <span class="ai-value">{{ problem.ai_predicted_category|default:"Ã¢â‚¬â€" }}</span>
+                        <span class="ai-value">{{ problem.ai_predicted_category|default:"—" }}</span>
                     </div>
                     <div class="ai-row">
                         <span class="ai-label">
                             <i class="bi bi-flag-fill"></i> Predicted Priority
                         </span>
-                        <span class="ai-value">{{ problem.ai_predicted_priority|default:"Ã¢â‚¬â€" }}</span>
+                        <span class="ai-value">{{ problem.ai_predicted_priority|default:"—" }}</span>
                     </div>
                 </div>
             </div>

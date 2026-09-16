@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import Count, Q, Avg, F, ExpressionWrapper, DurationField
+from django.http import JsonResponse
 from problems.models import Problem, CATEGORY_CHOICES, STATUS_CHOICES
 from problems.forms import ProblemForm, AdminProblemEditForm
 from solutions.forms import SolutionForm
@@ -96,5 +97,39 @@ def problem_detail(request, pk):
 
 @login_required
 def my_submissions(request):
-    problems = Problem.objects.filter(submitted_by=request.user)
-    return render(request, 'problems/my_submissions.html', {'problems': problems})
+    """Show a student's submissions with fresh, status-specific counts."""
+    all_submissions = Problem.objects.filter(submitted_by=request.user)
+    current_status = request.GET.get('status', 'All').upper()
+    allowed_statuses = {'PENDING', 'APPROVED', 'REJECTED'}
+
+    # Unknown/legacy filter values use the default tab instead of showing an
+    # empty, misleading list.
+    if current_status not in allowed_statuses:
+        current_status = 'All'
+
+    problems = all_submissions
+    if current_status != 'All':
+        problems = problems.filter(status=current_status)
+
+    return render(request, 'problems/my_submissions.html', {
+        'problems': problems.order_by('-created_at'),
+        'current_status': current_status,
+        **_submission_counts(all_submissions),
+    })
+
+
+def _submission_counts(submissions):
+    """Calculate all dashboard badges in one database query."""
+    return submissions.aggregate(
+        total_count=Count('id'),
+        pending_count=Count('id', filter=Q(status='PENDING')),
+        approved_count=Count('id', filter=Q(status='APPROVED')),
+        rejected_count=Count('id', filter=Q(status='REJECTED')),
+    )
+
+
+@login_required
+def my_submission_counts(request):
+    """Polling endpoint for live updates after a moderator changes a status."""
+    submissions = Problem.objects.filter(submitted_by=request.user)
+    return JsonResponse(_submission_counts(submissions))

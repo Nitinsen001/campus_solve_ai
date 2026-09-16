@@ -3,6 +3,7 @@
 {% block title %}Campus Problem Feed - CampusSolve AI{% endblock %}
 
 {% block content %}
+
 <style>
     /* ============================================
        PROBLEM FEED SHELL (WIDE LAYOUT)
@@ -694,7 +695,7 @@
     }
 
     /* ============================================
-       RESPONSIVE Ã¢â‚¬â€ FULL MEDIA QUERIES
+       RESPONSIVE — FULL MEDIA QUERIES
        ============================================ */
 
     /* Large desktop: keep 3-4 columns nice */
@@ -908,7 +909,7 @@
                     <div class="pc-meta-row">
                         <span class="pc-meta-item">
                             <i class="bi bi-geo-alt-fill"></i>
-                            {{ problem.location|default:"Ã¢â‚¬â€" }}
+                            {{ problem.location|default:"—" }}
                         </span>
                         <span class="pc-meta-item">
                             <i class="bi bi-calendar3"></i>
