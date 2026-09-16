@@ -1,6 +1,8 @@
 # Deploying CampusSolve AI on Vercel
 
-Vercel detects this Django project from `campus_solve_ai/manage.py`; no legacy `api/` proxy or rewrite is required.
+`vercel.json` explicitly routes every request to the Django WSGI application.
+This avoids a platform-level `404 NOT_FOUND` if automatic framework detection
+does not recognize the project's nested package layout.
 
 ## 1. Create persistent storage
 
