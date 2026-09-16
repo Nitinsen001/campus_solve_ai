@@ -704,6 +704,7 @@
                             <thead>
                                 <tr>
                                     <th>Problem</th>
+                                    <th>Submitted By</th>
                                     <th>Solution</th>
                                     <th>Date</th>
                                     <th>Actions</th>
@@ -714,6 +715,10 @@
                                     <tr>
                                         <td>
                                             <div class="problem-title">{{ s.problem.title|truncatewords:3 }}</div>
+                                        </td>
+                                        <td>
+                                            <div class="problem-title">{{ s.submitted_by.full_name }}</div>
+                                            <small>{{ s.submitted_by.email }}</small>
                                         </td>
                                         <td>
                                             <div class="solution-text">{{ s.solution_text|truncatewords:5 }}</div>
@@ -752,7 +757,7 @@
                                     </tr>
                                 {% empty %}
                                     <tr>
-                                        <td colspan="4">
+                                        <td colspan="5">
                                             <div class="empty-state">
                                                 <i class="bi bi-check2-circle"></i>
                                                 <p>No pending solutions</p>

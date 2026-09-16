@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.db.models import Count, Q, Avg, F, ExpressionWrapper, DurationField
+from django.db.models import Count, Q, Avg, F, ExpressionWrapper, DurationField, Exists, OuterRef
 from django.http import JsonResponse
-from problems.models import Problem, CATEGORY_CHOICES, STATUS_CHOICES
+from django.utils.http import url_has_allowed_host_and_scheme
+from problems.models import Problem, ProblemVote, CATEGORY_CHOICES, STATUS_CHOICES
 from problems.forms import ProblemForm, AdminProblemEditForm
 from solutions.forms import SolutionForm
 from ai_engine.services import analyze_problem
@@ -15,8 +16,10 @@ from django.utils import timezone
 @login_required
 def problem_feed(request):
     problems = Problem.objects.exclude(status__in=['PENDING', 'REJECTED']).annotate(
-        solution_count=Count('solutions', filter=Q(solutions__approval_status='APPROVED'))
-    ).order_by('-created_at')
+        solution_count=Count('solutions', filter=Q(solutions__approval_status='APPROVED')),
+        vote_count=Count('votes', distinct=True),
+        user_voted=Exists(ProblemVote.objects.filter(problem=OuterRef('pk'), student=request.user)),
+    ).order_by('-vote_count', '-created_at')
     category_filter = request.GET.get('category')
     status_filter = request.GET.get('status')
     search_query = request.GET.get('q')
@@ -44,6 +47,28 @@ def problem_feed(request):
         'search_query': search_query or '',
     }
     return render(request, 'problems/feed.html', context)
+
+
+@login_required
+def vote_problem(request, pk):
+    if request.method != 'POST':
+        return redirect('problem_feed')
+    if request.user.role != 'STUDENT':
+        messages.error(request, 'Only students can vote on problems.')
+        return redirect('problem_feed')
+
+    problem = get_object_or_404(Problem.objects.exclude(status__in=['PENDING', 'REJECTED']), pk=pk)
+    vote, created = ProblemVote.objects.get_or_create(problem=problem, student=request.user)
+    if not created:
+        vote.delete()
+        messages.info(request, 'Your vote was removed.')
+    else:
+        messages.success(request, 'Your vote was added to this problem.')
+
+    next_url = request.POST.get('next')
+    if not next_url or not url_has_allowed_host_and_scheme(next_url, {request.get_host()}):
+        next_url = 'problem_feed'
+    return redirect(next_url)
 
 @login_required
 def submit_problem(request):

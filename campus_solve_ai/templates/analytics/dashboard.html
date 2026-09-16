@@ -303,7 +303,17 @@
     }
 
     .chart-grid.two-col { grid-template-columns: 1fr 1fr; }
-    .chart-grid.two-col-wide { grid-template-columns: 1.35fr 1fr; }
+    .chart-grid.two-col-wide { grid-template-columns: 1fr 1fr; }
+
+    .chart-grid:not(.two-col) { grid-template-columns: 1fr; }
+
+    .chart-grid .chart-card { min-width: 0; }
+
+    .chart-grid .chart-body { min-height: 300px; }
+
+    .metrics-panel { margin-bottom: 1.75rem; }
+
+    .metrics-panel .chart-body { min-height: auto; }
 
     @media (max-width: 900px) {
         .chart-grid.two-col,
@@ -555,24 +565,8 @@
         </div>
     </div>
 
-    <!-- ============ CHART ROW 2 ============ -->
-    <div class="chart-grid two-col-wide">
-        <div class="chart-card">
-            <div class="chart-card-head">
-                <div class="chart-head-left">
-                    <span class="chart-head-icon indigo"><i class="bi bi-graph-up-arrow"></i></span>
-                    <div class="chart-head-title">
-                        <h5>Monthly Trends</h5>
-                        <p>Problem volume over time</p>
-                    </div>
-                </div>
-                <span class="chart-badge">Trend</span>
-            </div>
-            <div class="chart-body">
-                <canvas id="monthlyChart"></canvas>
-            </div>
-        </div>
-
+    <!-- ============ METRICS ============ -->
+    <div class="metrics-panel">
         <div class="chart-card">
             <div class="chart-card-head">
                 <div class="chart-head-left">
@@ -584,7 +578,7 @@
                 </div>
                 <span class="chart-badge">KPIs</span>
             </div>
-            <div class="chart-body" style="min-height: auto;">
+            <div class="chart-body">
                 <ul class="metrics-list">
                     <li class="metric-row">
                         <div class="metric-left">
@@ -617,6 +611,42 @@
                 </ul>
             </div>
         </div>
+    </div>
+
+    <!-- ============ CHART ROW 2 ============ -->
+    <div class="chart-grid two-col">
+        <div class="chart-card">
+            <div class="chart-card-head">
+                <div class="chart-head-left">
+                    <span class="chart-head-icon amber"><i class="bi bi-hand-thumbs-up-fill"></i></span>
+                    <div class="chart-head-title">
+                        <h5>Most Upvoted Problems</h5>
+                        <p>Top approved problems by student votes</p>
+                    </div>
+                </div>
+                <span class="chart-badge">{{ total_upvotes }} total votes</span>
+            </div>
+            <div class="chart-body">
+                <canvas id="upvoteChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <div class="chart-card-head">
+                <div class="chart-head-left">
+                    <span class="chart-head-icon indigo"><i class="bi bi-graph-up-arrow"></i></span>
+                    <div class="chart-head-title">
+                        <h5>Monthly Trends</h5>
+                        <p>Problem volume over time</p>
+                    </div>
+                </div>
+                <span class="chart-badge">Trend</span>
+            </div>
+            <div class="chart-body">
+                <canvas id="monthlyChart"></canvas>
+            </div>
+        </div>
+
     </div>
 
     <!-- ============ CHART ROW 3 ============ -->
@@ -746,7 +776,68 @@ const tooltipStyle = {
 })();
 
 /* ==========================================================
-   2. PRIORITY DISTRIBUTION — DOUGHNUT
+   2. MOST UPVOTED PROBLEMS — HORIZONTAL BAR
+   ========================================================== */
+(function () {
+    const el = document.getElementById('upvoteChart');
+    if (!el) return;
+    const data = {{ upvote_data|safe }};
+    const labels = data.map(function (item) {
+        return item.title.length > 28 ? item.title.slice(0, 28) + '...' : item.title;
+    });
+
+    new Chart(el, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Student upvotes',
+                data: data.map(item => item.vote_count),
+                backgroundColor: 'rgba(245, 158, 11, 0.85)',
+                hoverBackgroundColor: '#d97706',
+                borderRadius: 7,
+                borderSkipped: false,
+                barThickness: 22
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    ...tooltipStyle,
+                    callbacks: {
+                        title: function (items) { return data[items[0].dataIndex].title; },
+                        label: function (context) {
+                            const item = data[context.dataIndex];
+                            return ' ' + item.vote_count + ' upvotes | ' + item.category + ' | ' + item.priority;
+                        },
+                        afterLabel: function (context) {
+                            return 'Location: ' + (data[context.dataIndex].location || 'Unknown');
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    grid: { color: 'rgba(226, 232, 240, 0.6)' },
+                    ticks: { precision: 0 }
+                },
+                y: {
+                    grid: { display: false },
+                    ticks: { color: '#475569', font: { weight: '600' } }
+                }
+            },
+            animation: { duration: 900, easing: 'easeOutQuart' }
+        }
+    });
+})();
+
+/* ==========================================================
+   3. PRIORITY DISTRIBUTION — DOUGHNUT
    ========================================================== */
 (function () {
     const el = document.getElementById('priorityChart');
@@ -785,10 +876,26 @@ const tooltipStyle = {
                         usePointStyle: true,
                         pointStyle: 'circle',
                         font: { weight: '600', size: 12 },
-                        color: '#475569'
+                        color: '#475569',
+                        generateLabels: function (chart) {
+                            const items = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                            return items.map(function (item, index) {
+                                const entry = data[index];
+                                item.text = entry.priority + ' - ' + entry.count + ' (' + entry.percentage + '%)';
+                                return item;
+                            });
+                        }
                     }
                 },
-                tooltip: tooltipStyle
+                tooltip: {
+                    ...tooltipStyle,
+                    callbacks: {
+                        label: function (context) {
+                            const entry = data[context.dataIndex];
+                            return ' ' + entry.count + ' problems (' + entry.percentage + '%)';
+                        }
+                    }
+                }
             },
             animation: { duration: 1000, easing: 'easeOutQuart' }
         }
@@ -796,7 +903,7 @@ const tooltipStyle = {
 })();
 
 /* ==========================================================
-   3. MONTHLY TRENDS — LINE with gradient fill
+    4. MONTHLY TRENDS — LINE with gradient fill
    ========================================================== */
 (function () {
     const el = document.getElementById('monthlyChart');
@@ -857,7 +964,7 @@ const tooltipStyle = {
 })();
 
 /* ==========================================================
-   4. CAMPUS HOTSPOTS - HORIZONTAL BAR
+    5. CAMPUS HOTSPOTS - HORIZONTAL BAR
    ========================================================== */
 (function () {
     const el = document.getElementById('locationChart');
@@ -893,7 +1000,7 @@ const tooltipStyle = {
 })();
 
 /* ==========================================================
-   5. RESOLUTION FUNNEL - STATUS MIX
+    6. RESOLUTION FUNNEL - STATUS MIX
    ========================================================== */
 (function () {
     const el = document.getElementById('statusChart');
@@ -930,7 +1037,7 @@ const tooltipStyle = {
 })();
 
 /* ==========================================================
-   6. KPI SPARKLINES — tiny decorative line charts
+    7. KPI SPARKLINES — tiny decorative line charts
    ========================================================== */
 (function () {
     const sparkConfigs = [

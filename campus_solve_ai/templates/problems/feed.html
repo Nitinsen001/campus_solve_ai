@@ -521,6 +521,34 @@
 
     .pc-solutions i { font-size: 0.78rem; }
 
+    .pc-vote-form { margin: 0; }
+
+    .pc-vote-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.7rem;
+        border: 1px solid rgba(220, 38, 38, 0.2);
+        border-radius: 999px;
+        background: rgba(220, 38, 38, 0.06);
+        color: #991b1b;
+        font: inherit;
+        font-size: 0.72rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .pc-vote-btn:hover,
+    .pc-vote-btn.voted {
+        background: #dc2626;
+        border-color: #dc2626;
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    .pc-vote-btn i { font-size: 0.78rem; }
+
     /* Card footer with CTA */
     .problem-card-foot {
         padding: 0.85rem 1.25rem 1.15rem;
@@ -923,6 +951,14 @@
                             <span class="auth-dot"><i class="bi bi-incognito"></i></span>
                             Anonymous
                         </span>
+                        <form method="post" action="{% url 'vote_problem' problem.pk %}" class="pc-vote-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            <button type="submit" class="pc-vote-btn {% if problem.user_voted %}voted{% endif %}" aria-label="{% if problem.user_voted %}Remove your vote{% else %}Upvote this problem{% endif %}">
+                                <i class="bi {% if problem.user_voted %}bi-hand-thumbs-up-fill{% else %}bi-hand-thumbs-up{% endif %}"></i>
+                                <span>{{ problem.vote_count }} Upvote{{ problem.vote_count|pluralize }}</span>
+                            </button>
+                        </form>
                         <span class="pc-solutions">
                             <i class="bi bi-lightbulb-fill"></i>
                             {{ problem.approved_solution_count }} Solution{{ problem.approved_solution_count|pluralize }}

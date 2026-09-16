@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Q, Avg, F, ExpressionWrapper, DurationField
 from django.db.models.functions import TruncMonth
-from problems.models import Problem
+from problems.models import Problem, ProblemVote
 from solutions.models import Solution
 from accounts.models import User
 from ai_engine.models import DuplicateRecord
@@ -33,6 +33,14 @@ def analytics_dashboard(request):
     status_data = Problem.objects.values('status').annotate(count=Count('id')).order_by('-count')
     monthly_data = Problem.objects.filter(status='APPROVED').annotate(month=TruncMonth('created_at')).values('month').annotate(count=Count('id')).order_by('month')
     priority_data = Problem.objects.filter(status='APPROVED').values('priority').annotate(count=Count('id'))
+    priority_data = list(priority_data)
+    approved_problem_count = sum(item['count'] for item in priority_data)
+    for item in priority_data:
+        item['percentage'] = round(item['count'] / approved_problem_count * 100, 1) if approved_problem_count else 0
+    upvote_data = list(Problem.objects.filter(status='APPROVED').annotate(
+        vote_count=Count('votes', distinct=True)
+    ).values('title', 'category', 'priority', 'location', 'vote_count').order_by('-vote_count', '-created_at')[:10])
+    total_upvotes = ProblemVote.objects.filter(problem__status='APPROVED').count()
     resolution_data = Problem.objects.filter(status__in=['Resolved', 'Closed']).annotate(
         resolution_time=ExpressionWrapper(F('updated_at') - F('created_at'), output_field=DurationField())
     )
@@ -61,7 +69,9 @@ def analytics_dashboard(request):
         'location_data': list(location_data),
         'status_data': list(status_data),
         'monthly_data': list(monthly_data),
-        'priority_data': list(priority_data),
+        'priority_data': priority_data,
+        'upvote_data': upvote_data,
+        'total_upvotes': total_upvotes,
         'avg_resolution': avg_resolution,
         'duplicate_rate': duplicate_rate,
         'solution_per_problem': round(solution_per_problem, 2) if solution_per_problem else 0,

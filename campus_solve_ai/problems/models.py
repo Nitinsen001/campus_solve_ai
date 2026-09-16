@@ -65,3 +65,18 @@ class Problem(models.Model):
 
     def recommended_solution(self):
         return self.solutions.filter(approval_status='APPROVED', is_recommended=True).first()
+
+
+class ProblemVote(models.Model):
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE, related_name='votes')
+    student = models.ForeignKey(User, on_delete=models.CASCADE, related_name='problem_votes')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['problem', 'student'], name='unique_problem_student_vote'),
+        ]
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.student.full_name} voted for {self.problem.title}'

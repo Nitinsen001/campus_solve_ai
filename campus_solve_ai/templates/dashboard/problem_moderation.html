@@ -846,6 +846,10 @@
                             <span class="label"><i class="bi bi-calendar3"></i> Submitted</span>
                             <span class="value">{{ problem.created_at|date:"M d, Y · H:i" }}</span>
                         </div>
+                        <div class="mod-info-row">
+                            <span class="label"><i class="bi bi-person-fill"></i> Submitted By</span>
+                            <span class="value">{{ problem.submitted_by.full_name }}<br><small>{{ problem.submitted_by.email }}</small></span>
+                        </div>
                     </div>
 
                     <!-- Image -->

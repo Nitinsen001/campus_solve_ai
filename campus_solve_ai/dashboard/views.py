@@ -28,7 +28,7 @@ def admin_dashboard(request):
     pending_solutions = Solution.objects.filter(approval_status='PENDING').count()
     approved_solutions = Solution.objects.filter(approval_status='APPROVED').count()
 
-    recent_problems = Problem.objects.order_by('-created_at')[:10]
+    recent_problems = Problem.objects.select_related('submitted_by').order_by('-created_at')[:10]
     pending_solution_list = Solution.objects.filter(approval_status='PENDING').select_related('problem', 'submitted_by').order_by('-created_at')[:10]
 
     context = {
@@ -47,7 +47,7 @@ def admin_dashboard(request):
 
 @admin_required
 def problem_moderation(request):
-    problems = Problem.objects.order_by('-created_at')
+    problems = Problem.objects.select_related('submitted_by').order_by('-created_at')
     return render(request, 'dashboard/problem_moderation.html', {'problems': problems})
 
 @admin_required
