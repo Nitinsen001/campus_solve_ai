@@ -1,0 +1,478 @@
+[
+{
+  "model": "sessions.session",
+  "pk": "3ma891a7a85e38n05cievnaxs6v5xksn",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x4bRR:qUmCCCzUamdcgSJlkMSqFQZVqKU40avvGR7gULBFx8w",
+    "expire_date": "2026-09-24T09:51:37.828Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5h50y4n043y7o279vwbseixcpmuez2n0",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x6X5u:eoKdgkyw72xEREVXq5J-8prQarWfQvbjmKlCDzyB9i0",
+    "expire_date": "2026-09-29T17:37:22.911Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6a4yg8le8zonk4uusv0di4bhlekr1l90",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x4b0N:GgkWp4xRg8JpYgHW6HphIgjxqBCZ6qX2K018GNKpS-4",
+    "expire_date": "2026-09-24T09:23:39.355Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dg4snw4bph96lbqblmocy36jjkhhtj7u",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1xAKnT:e0CBSrjqV4OtcDlNLhZ_oqmRH97ds27udMoojFUXOsE",
+    "expire_date": "2026-10-10T05:18:03.848Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gbbnx5jvv53ygut97gvza2w0pf9q4ter",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x5QGB:L1ntUmrbC-0gWZRK75yp2gHXjfHe9RF7F8H2kwfopqs",
+    "expire_date": "2026-09-26T16:07:23.833Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gky7n3uoiwwnr3utywxcnwbhsqpiim5z",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x4ajn:3eDsVBjUU479ynkL4j95IE1PDgp3Q4YOmxME3a4Ky18",
+    "expire_date": "2026-09-24T09:06:31.352Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hwhp0hq50hufxmf1zmvf9oec438rsht1",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x6Xb3:2d6bUBv1euJMYP5fz3IN0xK8CYqSjlsSbE3_lunUU7A",
+    "expire_date": "2026-09-29T18:09:33.729Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "im3num260jhz4gve1xwzxmafsvs8qihv",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x4akM:g9ix1mXm-ppsE0dKnydO-04oMsTQ6orOwaC07OFPNxM",
+    "expire_date": "2026-09-24T09:07:06.137Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jp9m4i8fk0myq9z6c16fw96icnz2s6ik",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x6MAg:XDAd7ooHYbsBX-ef96iKxTezwyUqAaOQD8F5hd22xHQ",
+    "expire_date": "2026-09-29T05:57:34.967Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "k8mein07wv9i4p691c81ojnzzns6tuwi",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAYwBaX7nsGMsNMbdVAUtqV8e7apAvd_vfef6mE2zqlrcmSZlYXFdTpdyPMDyk74DuWW9W5lnWZSe-KPmjTQ2V5Xg_372DCNn1rGsGA9caavmcnknsaR4oEkToJZ-xciAgeM0fMnXgXIAoEZkBjbbDq_QHuqDf1:1x5nqu:48uQovj0LuWPWMzpo-K7wHmgg78jwFNv7tTsCdFFn4U",
+    "expire_date": "2026-09-27T17:18:52.438Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "soq6ql0zgfn51w5zu2podswy7d1vb996",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x4bN8:bLD---AOK4-bL83YCzBvGepDzry-mRig1a3uGavgGu0",
+    "expire_date": "2026-09-24T09:47:10.157Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zholqq8n0kj58egzxhbin6aknw5aotjf",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x4aoy:bHjgj02UMQNeqwCUhvQB5xHMEDOJ1PkIMzpGexhKV8M",
+    "expire_date": "2026-09-24T09:11:52.849Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "zmopsmim7h4k8sw9dan55j30ds54zytp",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQRO9CHSEMmE_K9D4DYtklOIlAMnYV5e6xJRdJN5r3Zt4sxG0tYeu0hBnZlQ3s8ttBTE-qB8BHrPfGU6vrMgM_FH7SzqeG9Lqd7t9Bib3sa2cB1AhKORQOUQ_SkNmT9iSNk9qDdV57lZVHEpQhCzkmK4QBTAIV-3wBy7M3gA:1x6XMC:B2kmSxhElVAFD3VeV2Xz7gfJk7pbhL69faJcmdJqVaY",
+    "expire_date": "2026-09-29T17:54:12.400Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$HI21uP8rRQ4OsfJbZtUABx$1HZ8PMrE9xJbaytTcFN9ckAvRfVE5UfwPyQHADzVuTk=",
+    "last_login": "2026-09-26T05:18:03.833Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-10T08:52:46.854Z",
+    "full_name": "nitin sen ",
+    "email": "nitinsen70671@gmail.com",
+    "role": "ADMIN",
+    "created_at": "2026-09-10T08:52:47.191Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$oRjvtU26TehFRbe5MF7l6B$0mhmV7mOpY/b9+woJ7P3g3cpVYNuIC8I/ZlJz8pXE/g=",
+    "last_login": "2026-09-10T09:18:16.762Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-10T09:18:15.889Z",
+    "full_name": "viraj",
+    "email": "jit@tech.com",
+    "role": "STUDENT",
+    "created_at": "2026-09-10T09:18:16.741Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$njNEkVRcVYpfPQDxWrH9Xi$et5dKXYCts/GuMBv8agsdg9FWo1p2pMtS/RB2jNNvs8=",
+    "last_login": "2026-09-10T09:41:20.837Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-10T09:41:19.973Z",
+    "full_name": "chinu",
+    "email": "chinu30mjoshi@gmail.com",
+    "role": "STUDENT",
+    "created_at": "2026-09-10T09:41:20.816Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Yq4nW3JyJfPKEKKJmzAGHH$oWmlO/RMjgbX56o5uA9Oxdv4hjJvKvxvZwBclkMhYV4=",
+    "last_login": "2026-09-11T13:02:05.714Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-11T13:02:04.616Z",
+    "full_name": "jatin magariya",
+    "email": "jatin@gmail.com",
+    "role": "STUDENT",
+    "created_at": "2026-09-11T13:02:05.695Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$v0NPLJLm1tdcEzyxG8BJPO$GyzqL+cmnJp29vtZewBzMP7tNgMldsvCaasfHlrdpFU=",
+    "last_login": "2026-09-13T17:18:52.429Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-13T17:18:51.962Z",
+    "full_name": "AI Test Student",
+    "email": "ai.test.student@example.com",
+    "role": "STUDENT",
+    "created_at": "2026-09-13T17:18:52.405Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$QlojsmPvXxGcOhY5IkcbrF$2wbsJzR/KSCP+NwBydaakUk6czUEP7Be5tiEL2k2q9I=",
+    "last_login": "2026-09-17T09:20:00.269Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-15T05:36:20.444Z",
+    "full_name": "amin pathan",
+    "email": "amin@gmail.com",
+    "role": "STUDENT",
+    "created_at": "2026-09-15T05:36:21.448Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 1,
+  "fields": {
+    "title": "Water supply test",
+    "description": "No water in hostel washroom since morning",
+    "location": "Hostel Block A",
+    "category": "Water",
+    "ai_predicted_category": "Water",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "REJECTED",
+    "image": "",
+    "submitted_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-10T09:11:57.528Z",
+    "updated_at": "2026-09-16T17:25:17.558Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 4,
+  "fields": {
+    "title": "Library WiFi outage",
+    "description": "The WiFi in the main library has stopped working completely since yesterday. Students cannot access research papers or submit online assignments, and the issue affects the whole library.",
+    "location": "Main Library, First Floor",
+    "category": "Infrastructure",
+    "ai_predicted_category": "Infrastructure",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "APPROVED",
+    "image": "",
+    "submitted_by": [
+      "ai.test.student@example.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-13T17:19:08.943Z",
+    "updated_at": "2026-09-15T05:32:14.880Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 5,
+  "fields": {
+    "title": "Overflowing bins near science block",
+    "description": "The dustbins near the science block have been overflowing for three days. Waste is spreading onto the walkway and creating an unpleasant smell for students and staff.",
+    "location": "Science Block Entrance",
+    "category": "Cleanliness",
+    "ai_predicted_category": "Cleanliness",
+    "priority": "Medium",
+    "ai_predicted_priority": "Medium",
+    "status": "APPROVED",
+    "image": "",
+    "submitted_by": [
+      "ai.test.student@example.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-13T17:19:18.465Z",
+    "updated_at": "2026-09-15T05:32:10.426Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 6,
+  "fields": {
+    "title": "Canteen seating shortage",
+    "description": "The canteen has seating for far fewer students than arrive during lunch. Students wait twenty minutes and often eat standing, which makes them late for afternoon classes.",
+    "location": "Central Canteen",
+    "category": "Canteen",
+    "ai_predicted_category": "Canteen",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "APPROVED",
+    "image": "",
+    "submitted_by": [
+      "ai.test.student@example.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-13T17:19:38.498Z",
+    "updated_at": "2026-09-16T16:35:20.787Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 7,
+  "fields": {
+    "title": "Too many Monday tests",
+    "description": "Weekly Monday tests leave no time for rest, self study, or project work. The constant deadline pressure is affecting students across the department and should be reviewed.",
+    "location": "Engineering Department",
+    "category": "Other",
+    "ai_predicted_category": "Other",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "APPROVED",
+    "image": "",
+    "submitted_by": [
+      "ai.test.student@example.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-13T17:19:52.533Z",
+    "updated_at": "2026-09-15T05:32:04.663Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 8,
+  "fields": {
+    "title": "Broken washroom lock in D block",
+    "description": "The lock on the second floor washroom door in D block has been broken for a week. Students cannot close the door properly and the maintenance issue is becoming a privacy and safety concern.",
+    "location": "D Block, Second Floor Washroom",
+    "category": "Infrastructure",
+    "ai_predicted_category": "Infrastructure",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "APPROVED",
+    "image": "",
+    "submitted_by": [
+      "ai.test.student@example.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-13T17:20:06.785Z",
+    "updated_at": "2026-09-15T05:32:01.803Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 9,
+  "fields": {
+    "title": "Library internet keeps disconnecting",
+    "description": "The library internet connection disconnects every few minutes and the login page often fails to load. Students cannot reliably research or complete online assignments.",
+    "location": "Main Library, Second Floor",
+    "category": "Infrastructure",
+    "ai_predicted_category": "Infrastructure",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "APPROVED",
+    "image": "",
+    "submitted_by": [
+      "ai.test.student@example.com"
+    ],
+    "approved_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "created_at": "2026-09-13T17:20:26.197Z",
+    "updated_at": "2026-09-16T13:40:18.785Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problem",
+  "pk": 10,
+  "fields": {
+    "title": "cleanliness",
+    "description": "the class is not cleaned",
+    "location": "jit borawan",
+    "category": "Cleanliness",
+    "ai_predicted_category": "Cleanliness",
+    "priority": "High",
+    "ai_predicted_priority": "High",
+    "status": "PENDING",
+    "image": "problem_images/attack_on_titan1.avif",
+    "submitted_by": [
+      "amin@gmail.com"
+    ],
+    "approved_by": null,
+    "created_at": "2026-09-16T07:12:26.811Z",
+    "updated_at": "2026-09-16T07:12:26.812Z",
+    "is_duplicate": false,
+    "duplicate_of": null
+  }
+},
+{
+  "model": "problems.problemvote",
+  "pk": 1,
+  "fields": {
+    "problem": 8,
+    "student": [
+      "amin@gmail.com"
+    ],
+    "created_at": "2026-09-16T17:06:08.690Z"
+  }
+},
+{
+  "model": "problems.problemvote",
+  "pk": 3,
+  "fields": {
+    "problem": 9,
+    "student": [
+      "amin@gmail.com"
+    ],
+    "created_at": "2026-09-16T17:08:22.705Z"
+  }
+},
+{
+  "model": "problems.problemvote",
+  "pk": 4,
+  "fields": {
+    "problem": 5,
+    "student": [
+      "amin@gmail.com"
+    ],
+    "created_at": "2026-09-16T17:08:29.483Z"
+  }
+},
+{
+  "model": "problems.problemvote",
+  "pk": 5,
+  "fields": {
+    "problem": 7,
+    "student": [
+      "amin@gmail.com"
+    ],
+    "created_at": "2026-09-17T09:20:07.676Z"
+  }
+},
+{
+  "model": "solutions.solution",
+  "pk": 6,
+  "fields": {
+    "problem": 7,
+    "solution_text": "only take test on end of weekend or on monday therfore the student have time for study on sunday",
+    "submitted_by": [
+      "nitinsen70671@gmail.com"
+    ],
+    "approval_status": "PENDING",
+    "is_recommended": false,
+    "approved_by": null,
+    "created_at": "2026-09-15T17:42:59.182Z",
+    "updated_at": "2026-09-15T17:42:59.182Z"
+  }
+}
+]
