@@ -13,7 +13,8 @@ ALLOWED_HOSTS = [host for host in (_configured_hosts.split(',') + [_vercel_host]
 
 # WhiteNoise configuration
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 
 # Database configuration
 DATABASES = {
