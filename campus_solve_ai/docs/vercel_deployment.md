@@ -23,7 +23,7 @@ Use comma-separated values without spaces. `VERCEL_URL` is supplied automaticall
 
 ## 3. Deploy
 
-Push the project to GitHub and import it at Vercel with the **Root Directory** set to `campus_solve_ai` (the folder containing `manage.py`, `requirements.txt`, and `vercel.json`). Vercel detects Django automatically.
+Push the project to GitHub and import it at Vercel with the **Root Directory** set to the repository root (the folder containing `manage.py`, `requirements.txt`, and `vercel.json`). Keep the included `vercel.json`; it routes requests to the Django WSGI application.
 
 After the first deployment, run migrations once against the production database:
 
