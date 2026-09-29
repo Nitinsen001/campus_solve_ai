@@ -32,3 +32,5 @@ staticfiles/
 Thumbs.db
 .vercel
 .env*.local
+
+requirements_full_backup.txt

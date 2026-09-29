@@ -1,4 +1,4 @@
-﻿Django==4.2.30
+Django==4.2.30
 djangorestframework==3.16.1
 dj-database-url==3.1.2
 psycopg2-binary==2.9.11
