@@ -89,3 +89,9 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'problem_feed'
 LOGOUT_REDIRECT_URL = 'login'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
